@@ -15,10 +15,26 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Post-install script for the quiz manual grading report.
  * @package   quiz_essayhelper
- * @copyright 2016, Philippe Girard <girdphil@gmail.com>
+ * @copyright 2017, Philippe Girard <girdphil@gmail.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['essayhelper'] = 'Aide à la correction des textes à développement';
-$string['pluginname'] = 'Aide à la correction des textes à développement';
+
+defined('MOODLE_INTERNAL') || die();
+
+
+/**
+ * Post-install script
+ */
+function xmldb_quiz_grading_install() {
+    global $DB;
+
+    $record = new stdClass();
+    $record->name         = 'essayhelper';
+    $record->displayorder = '7000';
+    $record->capability   = 'mod/quiz:grade';
+
+    $DB->insert_record('quiz_reports', $record);
+}
