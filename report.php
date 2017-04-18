@@ -314,7 +314,7 @@ class quiz_essayhelper_report extends quiz_default_report {
         // Prepare the form.
         $hidden = array(
             'id' => $this->cm->id,
-            'mode' => 'grading',
+            'mode' => 'essayhelper',
             'slot' => $slot,
             'qid' => $questionid,
             'page' => $page,
